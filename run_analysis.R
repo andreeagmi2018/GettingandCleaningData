@@ -1,13 +1,13 @@
 ### Coursera: Getting and Cleaning Data Course Project
 
 ### Download data
-setwd("C:/Users/Andreea/Documents/Coursera")
+setwd("./Coursera")
 
 url<- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-download.file(url,destfile = "C:/Users/Andreea/Documents/Coursera/x.zip")
+download.file(url,destfile = "./Coursera/x.zip")
 
-folder_path <- file.path("C:/Users/Andreea/Documents/Coursera")
-unzip(zipfile=file.path("C:/Users/Andreea/Documents/Coursera/x.zip"), exdir=folder_path)
+folder_path <- file.path("./Coursera")
+unzip(zipfile=file.path("./Coursera/x.zip"), exdir=folder_path)
 library(dplyr)
 
 setwd("C:/Users/Andreea/Documents/Coursera/UCI HAR Dataset")
@@ -57,4 +57,4 @@ names(data_comb)<-gsub("BodyBody", "body", names(data_comb))
 ### Q5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 data_final<-aggregate(. ~subject + activity, data_comb, mean)
 data_final<-data_final[order(data_final$subject,data_final$activity),]
-write.table(data_final, file = file.path("C:/Users/Andreea/Documents/Coursera/UCI HAR Dataset","tidydata.txt"),row.name=FALSE, sep = ',')
+write.table(data_final, file = file.path("./Coursera/UCI HAR Dataset","tidydata.txt"),row.name=FALSE, sep = ',')
